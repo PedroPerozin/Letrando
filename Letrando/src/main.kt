@@ -120,7 +120,7 @@ fun main(args: Array<String>) {
 //        print("Escreva as palavras: ")
 //        val stringpalavra = readLine()!!
 
-        //var palavrasEscritas : ArrayList<String>
+        var palavrasEscritas = arrayListOf<String>("Java")
         for (j in 0 until tamanhoDoArray) {
                 //if(palavrasContidas.size == 0){
                         print("Escreva as palavras: ")
@@ -128,13 +128,14 @@ fun main(args: Array<String>) {
 
                         if (palavra7.conjPalavras.contains(stringpalavra)) { //verifica se existe a palavra escrita no array de palavras contidas
                                 //print("ENTREI PRIMEIRO IF")
-
-                                //palavrasEscritas.add(stringpalavra)
+                                palavrasEscritas.remove("Java")
+                                palavrasEscritas.add(stringpalavra)
+                                println(palavrasEscritas)
 
 
                                 palavrasContidas.remove(stringpalavra) // Remove a palavra da lista das palavras contidas
 
-                                println(stringpalavra) // imprime a palavra escrita
+                                //println(stringpalavra) // imprime a palavra escrita
 
                                 val tamanhoAttdoArray = palavrasContidas.size //calcula o novo tamanho do array, o tamanho att dps de remover a palavra escrita
 
