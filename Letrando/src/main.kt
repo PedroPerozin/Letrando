@@ -104,12 +104,15 @@ fun main(args: Array<String>) {
         palavra7.conjPalavras.add("ricos")
         palavra7.conjPalavras.add("risco")
 
+        val tempoInicio = System.currentTimeMillis()
         var tamanhoDoConjuntoLetras = palavra7.conjLetras.length
         var tamanhoDoArray = palavra7.conjPalavras.size
 
+        var tamanhoauxiliar = 0
+
         var palavrasContidas : ArrayList<String> = palavra7.conjPalavras
 
-        println(palavra7.conjLetras)
+        //println(palavra7.conjLetras)
         for(i in 0 until tamanhoDoArray){
 
             var tamanho = palavra7.conjPalavras[i].length
@@ -117,31 +120,41 @@ fun main(args: Array<String>) {
             println("_ ".repeat(tamanho))
         }
 
-//        print("Escreva as palavras: ")
-//        val stringpalavra = readLine()!!
 
-        var palavrasEscritas = arrayListOf<String>("Java")
-        for (j in 0 until tamanhoDoArray) {
-                //if(palavrasContidas.size == 0){
-                        print("Escreva as palavras: ")
-                        var stringpalavra = readLine()!!
+    var palavrasEscritas = arrayListOf<String>("Java")
+    palavrasEscritas.remove("Java")
 
-                        if (palavra7.conjPalavras.contains(stringpalavra)) { //verifica se existe a palavra escrita no array de palavras contidas
-                                //print("ENTREI PRIMEIRO IF")
-                                palavrasEscritas.remove("Java")
-                                palavrasEscritas.add(stringpalavra)
-                                println(palavrasEscritas)
+    while (palavrasEscritas.size <= palavra7.conjPalavras.size || palavrasEscritas.size >= palavra7.conjPalavras.size ){
+       //println(tamanhoauxiliar)
+
+        if(tamanhoauxiliar == tamanhoDoArray){
+            val tempoFinal = System.currentTimeMillis()
+            val delta = (tempoFinal - tempoInicio) / 1000
+            println("Parabéns, você concluiu a etapa no tempo de ${delta % 60} segundos")
+
+            break
+        }
+
+            println(palavra7.conjLetras)
+            print("Escreva as palavras: ")
+            var stringpalavra = readLine()!!
+
+                if (palavrasContidas.contains(stringpalavra)) { //verifica se existe a palavra escrita no array de palavras contidas
 
 
-                                palavrasContidas.remove(stringpalavra) // Remove a palavra da lista das palavras contidas
+                    palavrasEscritas.add(stringpalavra)
+                    println(palavrasEscritas)
 
-                                //println(stringpalavra) // imprime a palavra escrita
+
+                    palavrasContidas.remove(stringpalavra) // Remove a palavra da lista das palavras contidas
+                    tamanhoauxiliar ++
+
 
                                 val tamanhoAttdoArray = palavrasContidas.size //calcula o novo tamanho do array, o tamanho att dps de remover a palavra escrita
 
 
                                 for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
-                                        //print("ENTREI SEGUNDO FOR")
+
 
                                         val nmrTraco = palavrasContidas[x].length //pega o tamanho de cada palavra
 
@@ -152,14 +165,23 @@ fun main(args: Array<String>) {
                         }
 
                         else{
-                                println("Esta palavra não é válida :( ")
-                                //tamanhoDoArray = tamanhoDoArray + 1
-                                continue
-                                //(palavrasContidas.size == 0) {
+                            println("Esta palavra não é válida :( ")
+                            println(palavrasEscritas)
+                            val tamanhoAttdoArray = palavrasContidas.size
+                            for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
 
-                                // break;
+
+                                val nmrTraco = palavrasContidas[x].length //pega o tamanho de cada palavra
+
+                                println("_ ".repeat(nmrTraco)) //escreve os tracos de acordo com o tamanho de cada palavra
+
+
+                    }
+
+                                //continue
+
                         }
-                //}
+
 
 
 
