@@ -110,105 +110,89 @@ fun main(args: Array<String>) {
 //        }
 
 
+        while(true) {
 
-        val reader = Scanner(System.`in`)
-        println("Olá!!! O que deseja fazer\n" +
-                "1 - Novo Jogo\n" +
-                "2 - Ver Ranking\n" +
-                "3 - Sair\n")
-        print("Digite a Opcao: ")
+            val reader = Scanner(System.`in`)
+            println("Olá!!! O que deseja fazer\n" +
+                    "1 - Novo Jogo\n" +
+                    "2 - Continuar\n" +
+                    "3 - Ver Ranking\n" +
+                    "4 - Sair\n")
+            print("Digite a Opcao: ")
 
-    var opcaodigitada:Int = reader.nextInt()
+            var opcaodigitada: Int = reader.nextInt()
 
+            if(opcaodigitada != 1 && opcaodigitada != 2 && opcaodigitada != 3 && opcaodigitada != 4) println("Opcao Invalida!")
 
-
-        if(opcaodigitada == 3) return
-
-
-
-    var auxiliarPalavra = palavra6
-        if(opcaodigitada == 1){
-            print("Digite seu nome: ")
-            var nomePessoa = readLine()!!
-
-        val tempoInicio = System.currentTimeMillis()
-        var tamanhoDoConjuntoLetras = auxiliarPalavra.conjLetras.length
-        var tamanhoDoArray = auxiliarPalavra.conjPalavras.size
-
-        var tamanhoauxiliar = 0
-
-        var palavrasContidas : ArrayList<String> = auxiliarPalavra.conjPalavras
-
-        //println(palavra7.conjLetras)
-        for(i in 0 until tamanhoDoArray){
-
-            var tamanho = auxiliarPalavra.conjPalavras[i].length
-
-            println("_ ".repeat(tamanho))
-        }
+            if (opcaodigitada == 4) return
 
 
-    var palavrasEscritas = arrayListOf<String>("Java")
-    palavrasEscritas.remove("Java")
+            var auxiliarPalavra = palavra7
+            if (opcaodigitada == 1 || opcaodigitada == 2) {
+                print("Digite seu nome: ")
+                var nomePessoa = readLine()!!
 
-    while (palavrasEscritas.size <= auxiliarPalavra.conjPalavras.size || palavrasEscritas.size >= auxiliarPalavra.conjPalavras.size ){
-       //println(tamanhoauxiliar)
+                val tempoInicio = System.currentTimeMillis()
+                var tamanhoDoConjuntoLetras = auxiliarPalavra.conjLetras.length
+                var tamanhoDoArray = auxiliarPalavra.conjPalavras.size
 
-        if(tamanhoauxiliar == tamanhoDoArray){
-            val tempoFinal = System.currentTimeMillis()
-            val delta = (tempoFinal - tempoInicio) / 1000
-            println("Parabéns ${nomePessoa}, você concluiu a etapa no tempo de ${delta % 60} segundos")
-            //next(palavra6)
-            break
-        }
+                var tamanhoauxiliar = 0
 
-            println(auxiliarPalavra.conjLetras)
-            print("Escreva as palavras: ")
-            var stringpalavra = readLine()!!
+                var palavrasContidas: ArrayList<String> = auxiliarPalavra.conjPalavras
 
-                if (palavrasContidas.contains(stringpalavra)) { //verifica se existe a palavra escrita no array de palavras contidas
+                //println(palavra7.conjLetras)
+                for (i in 0 until tamanhoDoArray) {
 
+                    var tamanho = auxiliarPalavra.conjPalavras[i].length
 
-                    palavrasEscritas.add(stringpalavra)
-                    println(palavrasEscritas)
+                    println("_ ".repeat(tamanho))
+                }
 
 
-                    palavrasContidas.remove(stringpalavra) // Remove a palavra da lista das palavras contidas
-                    tamanhoauxiliar ++
+                var palavrasEscritas = arrayListOf<String>("Java")
+                palavrasEscritas.remove("Java")
+
+                while (palavrasEscritas.size <= auxiliarPalavra.conjPalavras.size || palavrasEscritas.size >= auxiliarPalavra.conjPalavras.size) {
+                    //println(tamanhoauxiliar)
+
+                    if (tamanhoauxiliar == tamanhoDoArray) {
+                        val tempoFinal = System.currentTimeMillis()
+                        val delta = (tempoFinal - tempoInicio) / 1000
+                        println("Parabéns ${nomePessoa}, você concluiu a etapa no tempo de ${delta % 60} segundos")
+                        //next(palavra6)
+                        break
+                    }
+
+                    println(auxiliarPalavra.conjLetras)
+                    print("Escreva as palavras: ")
+                    var stringpalavra = readLine()!!
+
+                    if (palavrasContidas.contains(stringpalavra)) { //verifica se existe a palavra escrita no array de palavras contidas
 
 
-                                val tamanhoAttdoArray = palavrasContidas.size //calcula o novo tamanho do array, o tamanho att dps de remover a palavra escrita
+                        palavrasEscritas.add(stringpalavra)
+                        println(palavrasEscritas)
 
 
-                                for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
+                        palavrasContidas.remove(stringpalavra) // Remove a palavra da lista das palavras contidas
+                        tamanhoauxiliar++
 
 
-                                        val nmrTraco = palavrasContidas[x].length //pega o tamanho de cada palavra
-
-                                        println("_ ".repeat(nmrTraco)) //escreve os tracos de acordo com o tamanho de cada palavra
+                        val tamanhoAttdoArray = palavrasContidas.size //calcula o novo tamanho do array, o tamanho att dps de remover a palavra escrita
 
 
-                                }
+                        for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
+
+
+                            val nmrTraco = palavrasContidas[x].length //pega o tamanho de cada palavra
+
+                            println("_ ".repeat(nmrTraco)) //escreve os tracos de acordo com o tamanho de cada palavra
+
+
                         }
-
-                        else{
-                            if(palavrasEscritas.contains(stringpalavra)){
-                                println("Essa palavra já foi escrita, tente outra palavra")
-                                println(palavrasEscritas)
-                                val tamanhoAttdoArray = palavrasContidas.size
-                                for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
-
-
-                                    val nmrTraco = palavrasContidas[x].length //pega o tamanho de cada palavra
-
-                                    println("_ ".repeat(nmrTraco)) //escreve os tracos de acordo com o tamanho de cada palavra
-
-
-                                }
-
-                                continue
-                            }
-                            println("Esta palavra não é válida :( ")
+                    } else {
+                        if (palavrasEscritas.contains(stringpalavra)) {
+                            println("Essa palavra já foi escrita, tente outra palavra")
                             println(palavrasEscritas)
                             val tamanhoAttdoArray = palavrasContidas.size
                             for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
@@ -221,17 +205,28 @@ fun main(args: Array<String>) {
 
                             }
 
+                            continue
+                        }
+                        println("Esta palavra não é válida :( ")
+                        println(palavrasEscritas)
+                        val tamanhoAttdoArray = palavrasContidas.size
+                        for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
+
+
+                            val nmrTraco = palavrasContidas[x].length //pega o tamanho de cada palavra
+
+                            println("_ ".repeat(nmrTraco)) //escreve os tracos de acordo com o tamanho de cada palavra
+
+
                         }
 
+                    }
 
 
-
-        }
-
+                }
 
 
-
-
+            }
         }
         }
 
