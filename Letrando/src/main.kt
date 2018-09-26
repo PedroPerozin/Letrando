@@ -1,6 +1,7 @@
 import Letrando
 
 import kotlin.collections.ArrayList
+import java.util.Scanner
 
 fun main(args: Array<String>) {
 
@@ -104,18 +105,44 @@ fun main(args: Array<String>) {
         palavra7.conjPalavras.add("ricos")
         palavra7.conjPalavras.add("risco")
 
+//        fun next(){
+//           var p =
+//        }
+
+
+
+        val reader = Scanner(System.`in`)
+        println("Olá!!! O que deseja fazer\n" +
+                "1 - Novo Jogo\n" +
+                "2 - Ver Ranking\n" +
+                "3 - Sair\n")
+        print("Digite a Opcao: ")
+
+    var opcaodigitada:Int = reader.nextInt()
+
+
+
+        if(opcaodigitada == 3) return
+
+
+
+    var auxiliarPalavra = palavra6
+        if(opcaodigitada == 1){
+            print("Digite seu nome: ")
+            var nomePessoa = readLine()!!
+
         val tempoInicio = System.currentTimeMillis()
-        var tamanhoDoConjuntoLetras = palavra7.conjLetras.length
-        var tamanhoDoArray = palavra7.conjPalavras.size
+        var tamanhoDoConjuntoLetras = auxiliarPalavra.conjLetras.length
+        var tamanhoDoArray = auxiliarPalavra.conjPalavras.size
 
         var tamanhoauxiliar = 0
 
-        var palavrasContidas : ArrayList<String> = palavra7.conjPalavras
+        var palavrasContidas : ArrayList<String> = auxiliarPalavra.conjPalavras
 
         //println(palavra7.conjLetras)
         for(i in 0 until tamanhoDoArray){
 
-            var tamanho = palavra7.conjPalavras[i].length
+            var tamanho = auxiliarPalavra.conjPalavras[i].length
 
             println("_ ".repeat(tamanho))
         }
@@ -124,18 +151,18 @@ fun main(args: Array<String>) {
     var palavrasEscritas = arrayListOf<String>("Java")
     palavrasEscritas.remove("Java")
 
-    while (palavrasEscritas.size <= palavra7.conjPalavras.size || palavrasEscritas.size >= palavra7.conjPalavras.size ){
+    while (palavrasEscritas.size <= auxiliarPalavra.conjPalavras.size || palavrasEscritas.size >= auxiliarPalavra.conjPalavras.size ){
        //println(tamanhoauxiliar)
 
         if(tamanhoauxiliar == tamanhoDoArray){
             val tempoFinal = System.currentTimeMillis()
             val delta = (tempoFinal - tempoInicio) / 1000
-            println("Parabéns, você concluiu a etapa no tempo de ${delta % 60} segundos")
-
+            println("Parabéns ${nomePessoa}, você concluiu a etapa no tempo de ${delta % 60} segundos")
+            //next(palavra6)
             break
         }
 
-            println(palavra7.conjLetras)
+            println(auxiliarPalavra.conjLetras)
             print("Escreva as palavras: ")
             var stringpalavra = readLine()!!
 
@@ -165,6 +192,22 @@ fun main(args: Array<String>) {
                         }
 
                         else{
+                            if(palavrasEscritas.contains(stringpalavra)){
+                                println("Essa palavra já foi escrita, tente outra palavra")
+                                println(palavrasEscritas)
+                                val tamanhoAttdoArray = palavrasContidas.size
+                                for (x in 0 until tamanhoAttdoArray) { //percorre cada palavra do novo array sem a palavra digitada
+
+
+                                    val nmrTraco = palavrasContidas[x].length //pega o tamanho de cada palavra
+
+                                    println("_ ".repeat(nmrTraco)) //escreve os tracos de acordo com o tamanho de cada palavra
+
+
+                                }
+
+                                continue
+                            }
                             println("Esta palavra não é válida :( ")
                             println(palavrasEscritas)
                             val tamanhoAttdoArray = palavrasContidas.size
@@ -176,9 +219,7 @@ fun main(args: Array<String>) {
                                 println("_ ".repeat(nmrTraco)) //escreve os tracos de acordo com o tamanho de cada palavra
 
 
-                    }
-
-                                //continue
+                            }
 
                         }
 
@@ -191,6 +232,7 @@ fun main(args: Array<String>) {
 
 
 
+        }
         }
 
 
